@@ -2,10 +2,13 @@ package com.zky.progenesis.dao;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.zky.progenesis.entity.Employee;
 
 import jakarta.persistence.EntityManager;
 
+@Repository
 public class EmpolyeeDAOJpaImpl implements EmployeeDAO {
     
     private EntityManager entityManager;
@@ -17,7 +20,8 @@ public class EmpolyeeDAOJpaImpl implements EmployeeDAO {
     @Override
     public List<Employee> findAll() {
         // Get all employees
-        return entityManager.createQuery("from Employee", Employee.class).getResultList();
+        List<Employee> employees = entityManager.createQuery("from Employee", Employee.class).getResultList();
+        return employees;
     }
 
     @Override

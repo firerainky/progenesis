@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.zky.progenesis.dao.EmployeeDAO;
 import com.zky.progenesis.entity.Employee;
+import com.zky.progenesis.service.EmployeeService;
 
 
 
@@ -15,15 +15,15 @@ import com.zky.progenesis.entity.Employee;
 @RequestMapping("/api")
 public class EmployeeController {
     
-    private final EmployeeDAO employeeDAO;
+    private final EmployeeService employeeService;
 
-    public EmployeeController(EmployeeDAO employeeDAO) {
-        this.employeeDAO = employeeDAO;
+    public EmployeeController(EmployeeService employeeService) {
+        this.employeeService = employeeService;
     }
 
     @GetMapping("/employees")
     public List<Employee> findAll() {
-        return employeeDAO.findAll();
+        List<Employee> employees =  employeeService.findAll();
+        return employees;
     }
-    
 }
