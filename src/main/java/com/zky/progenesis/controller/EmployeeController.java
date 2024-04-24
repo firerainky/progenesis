@@ -2,6 +2,7 @@ package com.zky.progenesis.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,14 +15,18 @@ import org.springframework.web.bind.annotation.RestController;
 import com.zky.progenesis.entity.Employee;
 import com.zky.progenesis.service.EmployeeService;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RestController
 @RequestMapping("/api")
+@Slf4j
 public class EmployeeController {
     
     private final EmployeeService employeeService;
 
-    public EmployeeController(EmployeeService employeeService) {
+    public EmployeeController(@Qualifier("employeeServiceRepoImpl") EmployeeService employeeService) {
         this.employeeService = employeeService;
+        log.info("@#￥%%￥#@ The class of employeeService is: " + employeeService.getClass());
     }
 
     @GetMapping("/employees")
