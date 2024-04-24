@@ -3,6 +3,7 @@ package com.zky.progenesis.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.zky.progenesis.dao.EmployeeDAO;
 import com.zky.progenesis.entity.Employee;
@@ -26,11 +27,13 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employeeDAO.findById(id);
     }
 
+    @Transactional
     @Override
-    public void save(Employee employee) {
-        employeeDAO.save(employee);
+    public Employee save(Employee employee) {
+        return employeeDAO.save(employee);
     }
 
+    @Transactional
     @Override
     public void deleteById(int id) {
         employeeDAO.deleteById(id);
