@@ -14,4 +14,7 @@ public interface AlarmMapper extends BaseMapper<Alarm> {
 
     @Select("SELECT * FROM ic_alarms WHERE JSON_EXTRACT(content, CONCAT('$.', #{key})) = #{value}")
     List<Alarm> selectByJsonValue(@Param("key") String key, @Param("value") String value);
+
+    @Select("SELECT * FROM ic_alarms ORDER BY JSON_EXTRACT(content, CONCAT('$.', #{key}))")
+    List<Alarm> selectOrderedByJsonValue(String key);
 }

@@ -27,4 +27,8 @@ public class AlarmDAO {
     public List<Alarm> findByJsonValue(String key, String value) {
         return alarmMapper.selectByJsonValue(key, value);
     }
+
+    public List<Alarm> findOrderedByJsonValue(String key) {
+        return alarmMapper.selectOrderedByJsonValue(key);
+    }
 }

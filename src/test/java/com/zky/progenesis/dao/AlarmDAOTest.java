@@ -68,4 +68,24 @@ public class AlarmDAOTest {
         // Assert
         assertEquals(expected, result);
     }
+
+    @Test
+    public void test_findAllSavedAlarmsOrderedByValueInJsonColumn() throws ParseException {
+
+        Date submitTime = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").parse("2022/01/01 00:00:00");
+        String jsonStr1 = "{\"key\": \"value1\"}";
+        String jsonStr2 = "{\"key\": \"value2\"}";
+
+        Alarm alarm1  = Alarm.builder().source("source1").content(jsonStr1).submitTime(submitTime).build();
+        Alarm alarm2  = Alarm.builder().source("source2").content(jsonStr2).submitTime(submitTime).build();
+        List<Alarm> alarms = Arrays.asList(alarm2, alarm1);
+        List<Alarm> expected = Arrays.asList(alarm1, alarm2);
+
+        // Act
+        sut.saveAlarms(alarms);
+        List<Alarm> result = sut.findOrderedByJsonValue("key");
+
+        // Assert
+        assertEquals(expected, result);
+    }
 }
