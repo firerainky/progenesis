@@ -38,7 +38,7 @@ create table ic_alarms
 (
     id           bigint auto_increment primary key,
     source varchar(64) null comment '故障来源',
-    content varchar(4096)  null comment '故障内容',
+    content json  null comment '故障内容',
     submit_time  datetime  null comment '上报时间'
 );
 
