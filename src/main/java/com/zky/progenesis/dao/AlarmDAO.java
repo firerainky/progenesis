@@ -16,12 +16,15 @@ public class AlarmDAO {
         this.alarmMapper = alarmMapper;
     }
 
-
     public void saveAlarms(List<Alarm> alarms) {
         alarms.forEach(alarm -> alarmMapper.insert(alarm));
     }
 
     public List<Alarm> findAll() {
         return alarmMapper.selectList(null);
+    }
+
+    public List<Alarm> findByJsonValue(String key, String value) {
+        return alarmMapper.selectByJsonValue(key, value);
     }
 }
