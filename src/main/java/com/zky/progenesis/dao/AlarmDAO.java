@@ -31,4 +31,8 @@ public class AlarmDAO {
     public List<Alarm> findOrderedByJsonValue(String key) {
         return alarmMapper.selectOrderedByJsonValue(key);
     }
+
+    public List<Alarm> findOrderedByJsonValueWithPagination(String key, int pageSize, int offset) {
+        return alarmMapper.selectOrderedByJsonValueWithPagination(key, pageSize, offset);
+    }
 }

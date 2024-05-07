@@ -17,4 +17,7 @@ public interface AlarmMapper extends BaseMapper<Alarm> {
 
     @Select("SELECT * FROM ic_alarms ORDER BY JSON_EXTRACT(content, CONCAT('$.', #{key}))")
     List<Alarm> selectOrderedByJsonValue(String key);
+
+    @Select("SELECT * FROM ic_alarms ORDER BY JSON_EXTRACT(content, CONCAT('$.', #{key})) LIMIT #{pageSize} OFFSET #{offset}")
+    List<Alarm> selectOrderedByJsonValueWithPagination(String key, int pageSize, int offset);
 }
