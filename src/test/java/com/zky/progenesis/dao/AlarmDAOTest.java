@@ -132,7 +132,6 @@ public class AlarmDAOTest {
         List<Alarm> expected = Arrays.asList(alarm4, alarm2);
 
         AlarmJsonQueryCondition conditionEqual = AlarmJsonQueryCondition.builder().key("key").value("value1").conditionType(ConditonType.equal).build();
-        // List<AlarmJsonQueryCondition> queryConditions = Arrays.asList(conditionEqual);
         AlarmJsonQueryCondition conditionLike = AlarmJsonQueryCondition.builder().key("description").value("amet").conditionType(ConditonType.like).build();
         AlarmJsonQueryCondition conditionOrderByAsc = AlarmJsonQueryCondition.builder().key("level").conditionType(ConditonType.orderByAsc).build();
         List<AlarmJsonQueryCondition> queryConditions = Arrays.asList(conditionEqual, conditionLike, conditionOrderByAsc);

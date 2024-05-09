@@ -8,23 +8,23 @@ CREATE TABLE `employee` (
     PRIMARY KEY (`id`)
 );
 
--- DROP TABLE IF EXISTS `authorities`;
--- DROP TABLE IF EXISTS `users`;
+DROP TABLE IF EXISTS `authorities`;
+DROP TABLE IF EXISTS `users`;
 
--- --
--- -- Table structure for table `users`
--- --
+--
+-- Table structure for table `users`
+--
 
--- CREATE TABLE `users` (
---   `username` varchar(50) NOT NULL,
---   `password` varchar(50) NOT NULL,
---   `enabled` tinyint NOT NULL,
---   PRIMARY KEY (`username`)
--- );
+CREATE TABLE `users` (
+  `username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `enabled` tinyint NOT NULL,
+  PRIMARY KEY (`username`)
+);
 
--- --
--- -- Table structure for table `authorities`
--- --
+--
+-- Table structure for table `authorities`
+--
 
 -- CREATE TABLE `authorities` (
 --   `username` varchar(50) NOT NULL,
@@ -32,6 +32,14 @@ CREATE TABLE `employee` (
 --   UNIQUE KEY `authorities_idx_1` (`username`,`authority`),
 --   CONSTRAINT `authorities_ibfk_1` FOREIGN KEY (`username`) REFERENCES `users` (`username`)
 -- );
+
+-- Working for H2 Database
+CREATE TABLE authorities (
+  username varchar(50) NOT NULL,
+  authority varchar(50) NOT NULL,
+  CONSTRAINT authorities_idx_1 UNIQUE (username, authority),
+  CONSTRAINT authorities_ibfk_1 FOREIGN KEY (username) REFERENCES users (username)
+);
 
 drop table if EXISTS `ic_alarms`;
 create table ic_alarms
