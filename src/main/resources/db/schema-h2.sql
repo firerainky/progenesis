@@ -15,12 +15,20 @@ DROP TABLE IF EXISTS `users`;
 -- Table structure for table `users`
 --
 
+-- CREATE TABLE `users` (
+--   `username` varchar(50) NOT NULL,
+--   `password` varchar(50) NOT NULL,
+--   `enabled` tinyint NOT NULL,
+--   PRIMARY KEY (`username`)
+-- );
+
 CREATE TABLE `users` (
   `username` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
+  `password` char(68) NOT NULL,
   `enabled` tinyint NOT NULL,
   PRIMARY KEY (`username`)
 );
+
 
 --
 -- Table structure for table `authorities`
