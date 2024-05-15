@@ -6,11 +6,11 @@ import com.zky.progenesis.config.properties.TenantProperties;
 import net.sf.jsqlparser.expression.Expression;
 import net.sf.jsqlparser.expression.LongValue;
 
-public class MultiTenantHander implements TenantLineHandler {
+public class MultiTenantHandler implements TenantLineHandler {
 
     private final TenantProperties properties;
 
-    public MultiTenantHander(TenantProperties properties) {
+    public MultiTenantHandler(TenantProperties properties) {
         this.properties = properties;
     }
 
@@ -22,5 +22,13 @@ public class MultiTenantHander implements TenantLineHandler {
     @Override
     public String getTenantIdColumn() {
         return properties.getColumn();
+    }
+
+    @Override
+    public boolean ignoreTable(String tableName) {
+        if (properties.getFilterTables() != null) {
+            return !properties.getFilterTables().contains(tableName);
+        }
+        return true;
     }
 }
