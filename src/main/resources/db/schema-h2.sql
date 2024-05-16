@@ -58,3 +58,13 @@ create table ic_alarms
     submit_time  datetime  null comment '上报时间'
 );
 
+drop table if EXISTS `bills`;
+create table bills 
+(
+  id          bigint auto_increment primary key,
+  user_name   varchar(64) null,
+  lvl1_org_id varchar(64) null,
+  lvl2_org_id varchar(64) null,
+  lvl3_org_id varchar(64) null
+)
+

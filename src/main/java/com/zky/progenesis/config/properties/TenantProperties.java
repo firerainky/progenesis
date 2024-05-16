@@ -10,7 +10,7 @@ import lombok.Data;
 @Data
 public class TenantProperties {
     private Boolean enable = true;
-    private String column = "tenant_id";
+    private String column = "lvl1_org_id";
     // private List<String> ignoreTables;
 
     private List<String> filterTables;
