@@ -3,10 +3,11 @@ package com.zky.progenesis.handler;
 import java.util.List;
 
 import com.baomidou.mybatisplus.extension.plugins.handler.TenantLineHandler;
+import com.zky.progenesis.config.MyContextHandler;
 import com.zky.progenesis.config.properties.TenantProperties;
 
 import net.sf.jsqlparser.expression.Expression;
-import net.sf.jsqlparser.expression.LongValue;
+import net.sf.jsqlparser.expression.StringValue;
 import net.sf.jsqlparser.schema.Column;
 
 public class MultiTenantHandler implements TenantLineHandler {
@@ -19,7 +20,8 @@ public class MultiTenantHandler implements TenantLineHandler {
 
     @Override
     public Expression getTenantId() {
-        return new LongValue(1);
+        String tenantId = MyContextHandler.getTenantId();
+        return new StringValue(tenantId);
     }
     
     @Override
